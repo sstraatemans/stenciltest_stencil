@@ -1,1 +1,0 @@
-import{r as e,h as t}from"./p-2d8d94e4.js";const o=class{constructor(t){e(this,t)}inputHandler(e){const t=e.target;console.log("Received the custom todoCompleted event: ",t.value),console.log("value after event",t.name,t.value),new FormData(this.form).set(t.name,t.value)}render(){return t("form",{name:this.name,ref:e=>this.form=e},t("slot",null))}};export{o as mrvl_form}

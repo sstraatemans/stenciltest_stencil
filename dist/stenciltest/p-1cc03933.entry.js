@@ -1,1 +1,0 @@
-import{r as t,c as o,h as s}from"./p-2d8d94e4.js";const e=class{constructor(s){t(this,s),this.todoCompleted=o(this,"todoCompleted",7)}completedHandler(){this.todoCompleted.emit({foo:"bar"})}render(){return s("div",null,"Hello, World! I'm ",this.count,s("button",{onClick:this.completedHandler.bind(this)},"send event"))}};e.style=":host{display:block}";export{e as my_component}

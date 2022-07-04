@@ -8,8 +8,9 @@ export class MrvlForm {
   @Prop() name: string;
   private form?: HTMLFormElement;
 
-  @Listen('mrvlInput')
+  @Listen('input')
   inputHandler(event: CustomEvent) {
+    console.log(1111);
     const target: any = event.target;
     console.log('Received the custom todoCompleted event: ', target.value);
     console.log('value after event', target.name, target.value);
@@ -19,10 +20,6 @@ export class MrvlForm {
   }
 
   render() {
-    return (
-      <form name={this.name} ref={el => (this.form = el as HTMLFormElement)}>
-        <slot />
-      </form>
-    );
+    return <slot />;
   }
 }

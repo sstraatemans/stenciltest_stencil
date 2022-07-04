@@ -1,10 +1,11 @@
-import { r as registerInstance, h } from './index-ea898b41.js';
+import { r as registerInstance, h } from './index-45c50001.js';
 
 const MrvlForm = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
   inputHandler(event) {
+    console.log(1111);
     const target = event.target;
     console.log('Received the custom todoCompleted event: ', target.value);
     console.log('value after event', target.name, target.value);
@@ -12,7 +13,7 @@ const MrvlForm = class {
     formData.set(target.name, target.value);
   }
   render() {
-    return (h("form", { name: this.name, ref: el => (this.form = el) }, h("slot", null)));
+    return h("slot", null);
   }
 };
 

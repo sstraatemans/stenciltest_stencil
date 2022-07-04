@@ -1,3 +1,25 @@
+'use strict';
+
+function _interopNamespace(e) {
+  if (e && e.__esModule) return e;
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () {
+            return e[k];
+          }
+        });
+      }
+    });
+  }
+  n['default'] = e;
+  return Object.freeze(n);
+}
+
 const NAMESPACE = 'stenciltest';
 
 let scopeId;
@@ -251,13 +273,7 @@ const setAccessor = (elm, memberName, oldValue, newValue, isSvg, flags) => {
     if (oldValue !== newValue) {
         let isProp = isMemberInElement(elm, memberName);
         let ln = memberName.toLowerCase();
-        if (memberName === 'ref') {
-            // minifier will clean this up
-            if (newValue) {
-                newValue(elm);
-            }
-        }
-        else if ((!isProp ) &&
+        if ((!isProp ) &&
             memberName[0] === 'o' &&
             memberName[1] === 'n') {
             // Event Handlers
@@ -476,7 +492,6 @@ const removeVnodes = (vnodes, startIdx, endIdx, vnode, elm) => {
     for (; startIdx <= endIdx; ++startIdx) {
         if ((vnode = vnodes[startIdx])) {
             elm = vnode.$elm$;
-            callNodeRefs(vnode);
             {
                 // we're removing this element
                 // so it's possible we need to show slot fallback content now
@@ -766,12 +781,6 @@ const isNodeLocatedInSlot = (nodeToRelocate, slotNameAttr) => {
         return true;
     }
     return slotNameAttr === '';
-};
-const callNodeRefs = (vNode) => {
-    {
-        vNode.$attrs$ && vNode.$attrs$.ref && vNode.$attrs$.ref(null);
-        vNode.$children$ && vNode.$children$.map(callNodeRefs);
-    }
 };
 const renderVdom = (hostRef, renderFnResults) => {
     const hostElm = hostRef.$hostElement$;
@@ -1717,12 +1726,12 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
         return module[exportName];
     }
     /*!__STENCIL_STATIC_IMPORT_SWITCH__*/
-    return import(
+    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
     /* @vite-ignore */
     /* webpackInclude: /\.entry\.js$/ */
     /* webpackExclude: /\.system\.entry\.js$/ */
     /* webpackMode: "lazy" */
-    `./${bundleId}.entry.js${''}`).then((importedModule) => {
+    `./${bundleId}.entry.js${''}`)); }).then((importedModule) => {
         {
             cmpModules.set(bundleId, importedModule);
         }
@@ -1773,4 +1782,10 @@ const flush = () => {
 const nextTick = /*@__PURE__*/ (cb) => promiseResolve().then(cb);
 const writeTask = /*@__PURE__*/ queueTask(queueDomWrites, true);
 
-export { bootstrapLazy as b, createEvent as c, h, promiseResolve as p, registerInstance as r };
+exports.Host = Host;
+exports.bootstrapLazy = bootstrapLazy;
+exports.createEvent = createEvent;
+exports.getElement = getElement;
+exports.h = h;
+exports.promiseResolve = promiseResolve;
+exports.registerInstance = registerInstance;

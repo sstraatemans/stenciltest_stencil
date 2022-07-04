@@ -6,6 +6,7 @@ const MrvlForm$1 = /*@__PURE__*/ proxyCustomElement(class extends HTMLElement {
     this.__registerHost();
   }
   inputHandler(event) {
+    console.log(1111);
     const target = event.target;
     console.log('Received the custom todoCompleted event: ', target.value);
     console.log('value after event', target.name, target.value);
@@ -13,11 +14,11 @@ const MrvlForm$1 = /*@__PURE__*/ proxyCustomElement(class extends HTMLElement {
     formData.set(target.name, target.value);
   }
   render() {
-    return (h("form", { name: this.name, ref: el => (this.form = el) }, h("slot", null)));
+    return h("slot", null);
   }
 }, [4, "mrvl-form", {
     "name": [1]
-  }, [[0, "mrvlInput", "inputHandler"]]]);
+  }, [[0, "input", "inputHandler"]]]);
 function defineCustomElement$1() {
   if (typeof customElements === "undefined") {
     return;

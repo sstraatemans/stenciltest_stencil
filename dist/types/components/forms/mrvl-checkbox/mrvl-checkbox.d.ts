@@ -3,5 +3,6 @@ export declare class MrvlCheckbox {
   value: boolean;
   label: string;
   innerValue: string;
+  el: HTMLInputElement;
   render(): any;
 }

@@ -1,6 +1,7 @@
 import { Component, Prop, h, Listen } from '@stencil/core';
 export class MrvlForm {
   inputHandler(event) {
+    console.log(1111);
     const target = event.target;
     console.log('Received the custom todoCompleted event: ', target.value);
     console.log('value after event', target.name, target.value);
@@ -8,8 +9,7 @@ export class MrvlForm {
     formData.set(target.name, target.value);
   }
   render() {
-    return (h("form", { name: this.name, ref: el => (this.form = el) },
-      h("slot", null)));
+    return h("slot", null);
   }
   static get is() { return "mrvl-form"; }
   static get properties() { return {
@@ -32,7 +32,7 @@ export class MrvlForm {
     }
   }; }
   static get listeners() { return [{
-      "name": "mrvlInput",
+      "name": "input",
       "method": "inputHandler",
       "target": undefined,
       "capture": false,

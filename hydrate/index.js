@@ -4879,7 +4879,7 @@ function hydrateFactory($stencilWindow, $stencilHydrateOpts, $stencilHydrateResu
 
 
 const NAMESPACE = 'stenciltest';
-const BUILD = /* stenciltest */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, attachStyles: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: false, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: false, cssAnnotations: true, cssVarShim: false, devTools: false, disconnectedCallback: false, dynamicImportShim: false, element: false, event: true, hasRenderFn: true, hostListener: true, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: true, hydrateServerSide: true, hydratedAttribute: false, hydratedClass: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: false, lifecycleDOMEvents: false, member: true, method: false, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: true, propMutable: false, propNumber: true, propString: true, reflect: false, safari10: false, scoped: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, shadowDomShim: true, slot: true, slotChildNodesFix: false, slotRelocation: true, state: false, style: true, svg: false, taskQueue: true, updatable: true, vdomAttribute: true, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: true, vdomPropOrAttr: true, vdomRef: true, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: false };
+const BUILD = /* stenciltest */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, attachStyles: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: false, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: false, cssAnnotations: true, cssVarShim: false, devTools: false, disconnectedCallback: false, dynamicImportShim: false, element: false, event: true, hasRenderFn: true, hostListener: true, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: true, hydrateServerSide: true, hydratedAttribute: false, hydratedClass: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: false, lifecycleDOMEvents: false, member: true, method: false, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: true, propMutable: false, propNumber: true, propString: true, reflect: false, safari10: false, scoped: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, shadowDomShim: true, slot: true, slotChildNodesFix: false, slotRelocation: true, state: false, style: true, svg: false, taskQueue: true, updatable: true, vdomAttribute: true, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: true, vdomPropOrAttr: true, vdomRef: false, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: false };
 
 function componentOnReady() {
  return getHostRef(this).$onReadyPromise$;
@@ -5124,7 +5124,7 @@ const createTime = (e, t = "") => {
 }, Host = {}, isHost = e => e && e.$tag$ === Host, setAccessor = (e, t, o, n, s, l) => {
  if (o !== n) {
   let a = isMemberInElement(e, t), r = t.toLowerCase();
-  if ("ref" === t) n && n(e); else if ((a ) || "o" !== t[0] || "n" !== t[1]) {
+  if ((a ) || "o" !== t[0] || "n" !== t[1]) {
    {
     const i = isComplexType(n);
     if ((a || i && null !== n) && !s) try {
@@ -5176,7 +5176,7 @@ const createElm = (e, t, o, n) => {
  for (r.shadowRoot && r.tagName === hostTagName && (r = r.shadowRoot); s <= l; ++s) n[s] && (a = createElm(null, o, s, e), 
  a && (n[s].$elm$ = a, r.insertBefore(a, referenceNode(t) )));
 }, removeVnodes = (e, t, o, n, s) => {
- for (;t <= o; ++t) (n = e[t]) && (s = n.$elm$, callNodeRefs(n), (checkSlotFallbackVisibility = !0, 
+ for (;t <= o; ++t) (n = e[t]) && (s = n.$elm$, (checkSlotFallbackVisibility = !0, 
  s["s-ol"] ? s["s-ol"].remove() : putBackInOriginalLocation(s, !0)), s.remove());
 }, isSameVnode = (e, t) => e.$tag$ === t.$tag$ && ("slot" === e.$tag$ ? e.$name$ === t.$name$ : !BUILD.vdomKey ), referenceNode = e => e && e["s-ol"] || e, parentReferenceNode = e => (e["s-ol"] ? e["s-ol"] : e).parentNode, patch = (e, t) => {
  const o = t.$elm$ = e.$elm$, n = e.$children$, s = t.$children$, l = t.$tag$, a = t.$text$;
@@ -5228,9 +5228,7 @@ const createElm = (e, t, o, n) => {
   }));
   1 === t.nodeType && relocateSlotContent(t);
  }
-}, isNodeLocatedInSlot = (e, t) => 1 === e.nodeType ? null === e.getAttribute("slot") && "" === t || e.getAttribute("slot") === t : e["s-sn"] === t || "" === t, callNodeRefs = e => {
- (e.$attrs$ && e.$attrs$.ref && e.$attrs$.ref(null), e.$children$ && e.$children$.map(callNodeRefs));
-}, renderVdom = (e, t) => {
+}, isNodeLocatedInSlot = (e, t) => 1 === e.nodeType ? null === e.getAttribute("slot") && "" === t || e.getAttribute("slot") === t : e["s-sn"] === t || "" === t, renderVdom = (e, t) => {
  const o = e.$hostElement$, s = e.$vnode$ || newVNode(null, null), l = isHost(t) ? t : h(null, null, t);
  if (hostTagName = o.tagName, BUILD.isDev  ) ;
  if (l.$tag$ = null, l.$flags$ |= 4, e.$vnode$ = l, l.$elm$ = s.$elm$ = o.shadowRoot || o, 
@@ -5658,10 +5656,23 @@ class MrvlCheckbox {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
+  // renderInputOutsideShadowRoot(container, name, value) {
+  //   let input = container.querySelector('input.hidden-input');
+  //   if (!input) {
+  //     input = container.ownerDocument.createElement('input');
+  //     input.type = 'hidden';
+  //     input.classList.add('hidden-input');
+  //     container.appendChild(input);
+  //   }
+  //   input.name = name;
+  //   input.value = value || '';
+  // }
   render() {
     const { value, name } = this;
-    return (hAsync("div", null, hAsync("label", { htmlFor: this.name }, this.label), hAsync("input", { type: "checkbox", name: name, id: name, checked: !!value })));
+    //this.renderInputOutsideShadowRoot(el, name, value);
+    return (hAsync(Host, null, hAsync("div", null, hAsync("label", { htmlFor: this.name }, this.label), hAsync("input", { type: "checkbox", name: name, id: name, checked: !!value }))));
   }
+  get el() { return getElement(this); }
   static get cmpMeta() { return {
     "$flags$": 0,
     "$tagName$": "mrvl-checkbox",
@@ -5682,6 +5693,7 @@ class MrvlForm {
     registerInstance(this, hostRef);
   }
   inputHandler(event) {
+    console.log(1111);
     const target = event.target;
     console.log('Received the custom todoCompleted event: ', target.value);
     console.log('value after event', target.name, target.value);
@@ -5689,7 +5701,7 @@ class MrvlForm {
     formData.set(target.name, target.value);
   }
   render() {
-    return (hAsync("form", { name: this.name, ref: el => (this.form = el) }, hAsync("slot", null)));
+    return hAsync("slot", null);
   }
   static get cmpMeta() { return {
     "$flags$": 4,
@@ -5697,7 +5709,7 @@ class MrvlForm {
     "$members$": {
       "name": [1]
     },
-    "$listeners$": [[0, "mrvlInput", "inputHandler"]],
+    "$listeners$": [[0, "input", "inputHandler"]],
     "$lazyBundleId$": "-",
     "$attrsToReflect$": []
   }; }
@@ -5707,10 +5719,23 @@ class MrvlInput {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
+  // renderInputOutsideShadowRoot(container, name, value) {
+  //   let input = container.querySelector('input.hidden-input');
+  //   if (!input) {
+  //     input = container.ownerDocument.createElement('input');
+  //     input.type = 'hidden';
+  //     input.classList.add('hidden-input');
+  //     container.appendChild(input);
+  //   }
+  //   input.name = name;
+  //   input.value = value || '';
+  // }
   render() {
     const { value, name } = this;
-    return (hAsync("div", null, hAsync("label", { htmlFor: this.name }, this.label), hAsync("input", { type: "text", name: name, id: name, value: value })));
+    //this.renderInputOutsideShadowRoot(el, name, value);
+    return (hAsync(Host, null, hAsync("div", null, hAsync("label", { htmlFor: this.name }, this.label), hAsync("input", { type: "text", name: name, id: name, value: value }))));
   }
+  get el() { return getElement(this); }
   static get cmpMeta() { return {
     "$flags$": 0,
     "$tagName$": "mrvl-input",
