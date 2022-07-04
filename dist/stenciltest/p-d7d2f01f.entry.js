@@ -1,1 +1,0 @@
-import{r as t,h as r}from"./p-d60488d8.js";const s=class{constructor(r){t(this,r)}getText(){return(this.first||"")+((t=this.middle)?` ${t}`:"")+((r=this.last)?` ${r}`:"");var t,r}render(){return r("button",null,"test",this.getText())}};export{s as mrvl_button}

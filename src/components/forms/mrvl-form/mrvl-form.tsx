@@ -1,4 +1,4 @@
-import { Component, Prop, h, Listen, Element } from '@stencil/core';
+import { Component, Prop, h, Listen } from '@stencil/core';
 
 @Component({
   tag: 'mrvl-form',
@@ -7,13 +7,6 @@ import { Component, Prop, h, Listen, Element } from '@stencil/core';
 export class MrvlForm {
   @Prop() name: string;
   private form?: HTMLFormElement;
-  @Element()
-  private host: HTMLFormElement;
-  public _internals: any;
-
-  constructor() {
-    this._internals = this.host.attachInternals?.();
-  }
 
   @Listen('mrvlInput')
   inputHandler(event: CustomEvent) {
@@ -22,8 +15,6 @@ export class MrvlForm {
     console.log('value after event', target.name, target.value);
 
     const formData = new FormData(this.form);
-
-    console.log(this.form.elements);
     formData.set(target.name, target.value);
   }
 

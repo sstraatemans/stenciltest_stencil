@@ -15,13 +15,6 @@
 | `value`      | `value`       |             | `boolean` | `undefined` |
 
 
-## Events
-
-| Event       | Description | Type               |
-| ----------- | ----------- | ------------------ |
-| `mrvlInput` |             | `CustomEvent<any>` |
-
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

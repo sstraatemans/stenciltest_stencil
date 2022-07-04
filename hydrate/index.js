@@ -5657,33 +5657,13 @@ class MrvlButton {
 class MrvlCheckbox {
   constructor(hostRef) {
     registerInstance(this, hostRef);
-    this.mrvlInput = createEvent(this, "mrvlInput", 7);
-  }
-  onInputChangeValue(event) {
-    this.value = event.target.checked;
-    console.log('value', event.target.name, event.target.checked);
-    //console.log('form', this._internals);
-    this.mrvlInput.emit(event);
-  }
-  renderInputOutsideShadowRoot(container, name, value) {
-    let input = container.querySelector('input.hidden-input');
-    if (!input) {
-      input = container.ownerDocument.createElement('input');
-      input.type = 'text';
-      input.classList.add('hidden-input');
-      container.appendChild(input);
-    }
-    input.name = name;
-    input.value = `${value}`;
   }
   render() {
-    const { el, value, name } = this;
-    this.renderInputOutsideShadowRoot(el, name, value);
-    return (hAsync(Host, null, hAsync("div", null, "dd", hAsync("label", { htmlFor: this.name }, this.label), hAsync("input", { onInput: this.onInputChangeValue.bind(this), type: "checkbox", name: name, id: name, checked: !!value }))));
+    const { value, name } = this;
+    return (hAsync("div", null, hAsync("label", { htmlFor: this.name }, this.label), hAsync("input", { type: "checkbox", name: name, id: name, checked: !!value })));
   }
-  get el() { return getElement(this); }
   static get cmpMeta() { return {
-    "$flags$": 9,
+    "$flags$": 0,
     "$tagName$": "mrvl-checkbox",
     "$members$": {
       "name": [1],
@@ -5700,21 +5680,17 @@ class MrvlCheckbox {
 class MrvlForm {
   constructor(hostRef) {
     registerInstance(this, hostRef);
-    var _a, _b;
-    this._internals = (_b = (_a = this.host).attachInternals) === null || _b === void 0 ? void 0 : _b.call(_a);
   }
   inputHandler(event) {
     const target = event.target;
     console.log('Received the custom todoCompleted event: ', target.value);
     console.log('value after event', target.name, target.value);
     const formData = new FormData(this.form);
-    console.log(this.form.elements);
     formData.set(target.name, target.value);
   }
   render() {
     return (hAsync("form", { name: this.name, ref: el => (this.form = el) }, hAsync("slot", null)));
   }
-  get host() { return getElement(this); }
   static get cmpMeta() { return {
     "$flags$": 4,
     "$tagName$": "mrvl-form",
@@ -5730,39 +5706,18 @@ class MrvlForm {
 class MrvlInput {
   constructor(hostRef) {
     registerInstance(this, hostRef);
-    this.mrvlInput = createEvent(this, "mrvlInput", 7);
-  }
-  onInputChangeValue(event) {
-    this.value = event.target.value;
-    console.log('value', event.target.name, event.target.value);
-    //console.log('form', this._internals);
-    this.mrvlInput.emit(event);
-  }
-  renderInputOutsideShadowRoot(container, name, value) {
-    let input = container.querySelector('input.hidden-input');
-    if (!input) {
-      input = container.ownerDocument.createElement('input');
-      input.type = 'hidden';
-      input.classList.add('hidden-input');
-      container.appendChild(input);
-    }
-    input.name = name;
-    input.value = value || '';
   }
   render() {
-    const { el, value, name } = this;
-    this.renderInputOutsideShadowRoot(el, name, value);
-    return (hAsync(Host, null, hAsync("div", null, "dd", hAsync("label", { htmlFor: this.name }, this.label), hAsync("input", { onInput: this.onInputChangeValue.bind(this), type: "text", name: name, id: name, value: value }))));
+    const { value, name } = this;
+    return (hAsync("div", null, hAsync("label", { htmlFor: this.name }, this.label), hAsync("input", { type: "text", name: name, id: name, value: value })));
   }
-  get el() { return getElement(this); }
   static get cmpMeta() { return {
-    "$flags$": 9,
+    "$flags$": 0,
     "$tagName$": "mrvl-input",
     "$members$": {
       "name": [1],
       "value": [1],
-      "label": [1],
-      "innerValue": [1, "inner-value"]
+      "label": [1]
     },
     "$listeners$": undefined,
     "$lazyBundleId$": "-",

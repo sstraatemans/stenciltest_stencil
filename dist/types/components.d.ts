@@ -30,7 +30,6 @@ export namespace Components {
         "name": string;
     }
     interface MrvlInput {
-        "innerValue": string;
         "label": string;
         "name": string;
         "value": string;
@@ -41,14 +40,6 @@ export namespace Components {
          */
         "count": number;
     }
-}
-export interface MrvlCheckboxCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMrvlCheckboxElement;
-}
-export interface MrvlInputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMrvlInputElement;
 }
 export interface MyComponentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -112,17 +103,14 @@ declare namespace LocalJSX {
         "innerValue"?: string;
         "label"?: string;
         "name"?: string;
-        "onMrvlInput"?: (event: MrvlCheckboxCustomEvent<any>) => void;
         "value"?: boolean;
     }
     interface MrvlForm {
         "name"?: string;
     }
     interface MrvlInput {
-        "innerValue"?: string;
         "label"?: string;
         "name"?: string;
-        "onMrvlInput"?: (event: MrvlInputCustomEvent<any>) => void;
         "value"?: string;
     }
     interface MyComponent {

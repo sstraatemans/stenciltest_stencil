@@ -1795,10 +1795,8 @@ const flush = () => {
 const nextTick = /*@__PURE__*/ (cb) => promiseResolve().then(cb);
 const writeTask = /*@__PURE__*/ queueTask(queueDomWrites, true);
 
-exports.Host = Host;
 exports.bootstrapLazy = bootstrapLazy;
 exports.createEvent = createEvent;
-exports.getElement = getElement;
 exports.h = h;
 exports.promiseResolve = promiseResolve;
 exports.registerInstance = registerInstance;

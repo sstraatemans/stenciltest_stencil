@@ -1,33 +1,12 @@
-import { Component, Prop, h, Event, Element, Host } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 export class MrvlCheckbox {
-  onInputChangeValue(event) {
-    this.value = event.target.checked;
-    console.log('value', event.target.name, event.target.checked);
-    //console.log('form', this._internals);
-    this.mrvlInput.emit(event);
-  }
-  renderInputOutsideShadowRoot(container, name, value) {
-    let input = container.querySelector('input.hidden-input');
-    if (!input) {
-      input = container.ownerDocument.createElement('input');
-      input.type = 'text';
-      input.classList.add('hidden-input');
-      container.appendChild(input);
-    }
-    input.name = name;
-    input.value = `${value}`;
-  }
   render() {
-    const { el, value, name } = this;
-    this.renderInputOutsideShadowRoot(el, name, value);
-    return (h(Host, null,
-      h("div", null,
-        "dd",
-        h("label", { htmlFor: this.name }, this.label),
-        h("input", { onInput: this.onInputChangeValue.bind(this), type: "checkbox", name: name, id: name, checked: !!value }))));
+    const { value, name } = this;
+    return (h("div", null,
+      h("label", { htmlFor: this.name }, this.label),
+      h("input", { type: "checkbox", name: name, id: name, checked: !!value })));
   }
   static get is() { return "mrvl-checkbox"; }
-  static get encapsulation() { return "shadow"; }
   static get properties() { return {
     "name": {
       "type": "string",
@@ -98,21 +77,4 @@ export class MrvlCheckbox {
       "reflect": false
     }
   }; }
-  static get events() { return [{
-      "method": "mrvlInput",
-      "name": "mrvlInput",
-      "bubbles": true,
-      "cancelable": true,
-      "composed": true,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "complexType": {
-        "original": "any",
-        "resolved": "any",
-        "references": {}
-      }
-    }]; }
-  static get elementRef() { return "el"; }
 }
