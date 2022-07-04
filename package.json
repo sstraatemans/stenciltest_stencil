@@ -11,6 +11,7 @@
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/stenciltest/stenciltest.esm.js",
   "private": true,
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/ionic-team/stencil-component-starter.git"
@@ -18,8 +19,7 @@
   "files": [
     "dist/",
     "loader/",
-    "hydrate/",
-    "react/"
+    "hydrate/"
   ],
   "scripts": {
     "build": "stencil build --docs",
