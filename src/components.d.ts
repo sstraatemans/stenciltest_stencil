@@ -7,18 +7,9 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface MrvlButton {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+        "outline": boolean;
+        "size": 'small' | 'medium' | 'large';
+        "type": 'button' | 'submit';
     }
     interface MrvlCheckbox {
         "innerValue": string;
@@ -86,18 +77,9 @@ declare global {
 }
 declare namespace LocalJSX {
     interface MrvlButton {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+        "outline"?: boolean;
+        "size"?: 'small' | 'medium' | 'large';
+        "type"?: 'button' | 'submit';
     }
     interface MrvlCheckbox {
         "innerValue"?: string;

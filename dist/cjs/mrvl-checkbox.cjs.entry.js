@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-76068a38.js');
+const index = require('./index-5c857e50.js');
 
 const MrvlCheckbox = class {
   constructor(hostRef) {

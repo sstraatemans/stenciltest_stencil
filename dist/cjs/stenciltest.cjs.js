@@ -1,6 +1,6 @@
 'use strict';
 
-const index = require('./index-76068a38.js');
+const index = require('./index-5c857e50.js');
 
 /*
  Stencil Client Patch Browser v2.17.0 | MIT Licensed | https://stenciljs.com
@@ -15,5 +15,5 @@ const patchBrowser = () => {
 };
 
 patchBrowser().then(options => {
-  return index.bootstrapLazy([["mrvl-button.cjs",[[1,"mrvl-button",{"first":[1],"middle":[1],"last":[1]}]]],["mrvl-checkbox.cjs",[[0,"mrvl-checkbox",{"name":[1],"value":[4],"label":[1],"innerValue":[1,"inner-value"]}]]],["mrvl-form.cjs",[[4,"mrvl-form",{"name":[1]},[[0,"input","inputHandler"]]]]],["mrvl-input.cjs",[[0,"mrvl-input",{"name":[1],"value":[1],"label":[1]}]]],["my-component.cjs",[[1,"my-component",{"count":[2]}]]]], options);
+  return index.bootstrapLazy([["mrvl-button.cjs",[[1,"mrvl-button",{"type":[1],"size":[1],"outline":[4]}]]],["mrvl-checkbox.cjs",[[0,"mrvl-checkbox",{"name":[1],"value":[4],"label":[1],"innerValue":[1,"inner-value"]}]]],["mrvl-form.cjs",[[4,"mrvl-form",{"name":[1]},[[0,"input","inputHandler"]]]]],["mrvl-input.cjs",[[0,"mrvl-input",{"name":[1],"value":[1],"label":[1]}]]],["my-component.cjs",[[1,"my-component",{"count":[2]}]]]], options);
 });

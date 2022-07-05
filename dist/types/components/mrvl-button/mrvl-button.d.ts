@@ -1,16 +1,6 @@
 export declare class MrvlButton {
-  /**
-   * The first name
-   */
-  first: string;
-  /**
-   * The middle name
-   */
-  middle: string;
-  /**
-   * The last name
-   */
-  last: string;
-  private getText;
+  type: 'button' | 'submit';
+  size: 'small' | 'medium' | 'large';
+  outline: boolean;
   render(): any;
 }

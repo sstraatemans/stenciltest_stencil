@@ -1,67 +1,76 @@
-import { Component, Prop, h } from '@stencil/core';
-import { format } from '../../utils/utils';
+import { Component, h, Prop, Host } from '@stencil/core';
+import classNames from 'classnames';
 export class MrvlButton {
-  getText() {
-    return format(this.first, this.middle, this.last);
+  constructor() {
+    this.size = 'medium';
+    this.outline = false;
   }
   render() {
-    return h("button", null,
-      "test",
-      this.getText());
+    return (h(Host, null,
+      h("button", { class: classNames('button', `size-${this.size}`, { outline: this.outline }) },
+        h("slot", null))));
   }
   static get is() { return "mrvl-button"; }
   static get encapsulation() { return "shadow"; }
+  static get originalStyleUrls() { return {
+    "$": ["mrvl-button.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["mrvl-button.css"]
+  }; }
   static get properties() { return {
-    "first": {
+    "type": {
       "type": "string",
       "mutable": false,
       "complexType": {
-        "original": "string",
-        "resolved": "string",
+        "original": "'button' | 'submit'",
+        "resolved": "\"button\" | \"submit\"",
         "references": {}
       },
       "required": false,
       "optional": false,
       "docs": {
         "tags": [],
-        "text": "The first name"
+        "text": ""
       },
-      "attribute": "first",
+      "attribute": "type",
       "reflect": false
     },
-    "middle": {
+    "size": {
       "type": "string",
       "mutable": false,
       "complexType": {
-        "original": "string",
-        "resolved": "string",
+        "original": "'small' | 'medium' | 'large'",
+        "resolved": "\"large\" | \"medium\" | \"small\"",
         "references": {}
       },
       "required": false,
       "optional": false,
       "docs": {
         "tags": [],
-        "text": "The middle name"
+        "text": ""
       },
-      "attribute": "middle",
-      "reflect": false
+      "attribute": "size",
+      "reflect": false,
+      "defaultValue": "'medium'"
     },
-    "last": {
-      "type": "string",
+    "outline": {
+      "type": "boolean",
       "mutable": false,
       "complexType": {
-        "original": "string",
-        "resolved": "string",
+        "original": "boolean",
+        "resolved": "boolean",
         "references": {}
       },
       "required": false,
       "optional": false,
       "docs": {
         "tags": [],
-        "text": "The last name"
+        "text": ""
       },
-      "attribute": "last",
-      "reflect": false
+      "attribute": "outline",
+      "reflect": false,
+      "defaultValue": "false"
     }
   }; }
 }

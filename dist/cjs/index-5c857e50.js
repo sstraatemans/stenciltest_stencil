@@ -232,6 +232,17 @@ const h = (nodeName, vnodeData, ...children) => {
         if (vnodeData.name) {
             slotName = vnodeData.name;
         }
+        {
+            const classData = vnodeData.className || vnodeData.class;
+            if (classData) {
+                vnodeData.class =
+                    typeof classData !== 'object'
+                        ? classData
+                        : Object.keys(classData)
+                            .filter((k) => classData[k])
+                            .join(' ');
+            }
+        }
     }
     const vnode = newVNode(nodeName, null);
     vnode.$attrs$ = vnodeData;
@@ -273,7 +284,14 @@ const setAccessor = (elm, memberName, oldValue, newValue, isSvg, flags) => {
     if (oldValue !== newValue) {
         let isProp = isMemberInElement(elm, memberName);
         let ln = memberName.toLowerCase();
-        if ((!isProp ) &&
+        if (memberName === 'class') {
+            const classList = elm.classList;
+            const oldClasses = parseClassList(oldValue);
+            const newClasses = parseClassList(newValue);
+            classList.remove(...oldClasses.filter((c) => c && !newClasses.includes(c)));
+            classList.add(...newClasses.filter((c) => c && !oldClasses.includes(c)));
+        }
+        else if ((!isProp ) &&
             memberName[0] === 'o' &&
             memberName[1] === 'n') {
             // Event Handlers
@@ -349,6 +367,8 @@ const setAccessor = (elm, memberName, oldValue, newValue, isSvg, flags) => {
         }
     }
 };
+const parseClassListRegex = /\s/;
+const parseClassList = (value) => (!value ? [] : value.split(parseClassListRegex));
 const updateElement = (oldVnode, newVnode, isSvgMode, memberName) => {
     // if the element passed in is a shadow root, which is a document fragment
     // then we want to be adding attrs/props to the shadow root's "host" element

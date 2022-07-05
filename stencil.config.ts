@@ -3,6 +3,7 @@ import { reactOutputTarget as react } from '@stencil/react-output-target';
 
 export const config: Config = {
   namespace: 'stenciltest',
+  globalStyle: './src/global/global.css',
   outputTargets: [
     react({
       componentCorePackage: 'stenciltest',

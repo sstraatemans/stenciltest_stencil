@@ -1,0 +1,7 @@
+import{r,h as t,H as n}from"./p-765b05aa.js";var o,i=(function(r){
+/*!
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+!function(){var t={}.hasOwnProperty;function n(){for(var r=[],o=0;o<arguments.length;o++){var i=arguments[o];if(i){var e=typeof i;if("string"===e||"number"===e)r.push(i);else if(Array.isArray(i)){if(i.length){var a=n.apply(null,i);a&&r.push(a)}}else if("object"===e)if(i.toString===Object.prototype.toString)for(var s in i)t.call(i,s)&&i[s]&&r.push(s);else r.push(i.toString())}}return r.join(" ")}r.exports?(n.default=n,r.exports=n):window.classNames=n}()}(o={path:undefined,exports:{},require:function(){return function(){throw new Error("Dynamic requires are not currently supported by @rollup/plugin-commonjs")}()}}),o.exports);const e=class{constructor(t){r(this,t),this.size="medium"}render(){return t(n,null,t("button",{class:i("button",this.size)},t("slot",null)))}};e.style=":host{--font-family:'Lato', sans-serif;--primary:#007f93;--white:white}.button{font-family:var(--font-family);font-size:16px;line-height:24px;background-color:var(--primary);color:var(--white);padding:8px 16px;border:0;border-radius:100px}";export{e as mrvl_button}

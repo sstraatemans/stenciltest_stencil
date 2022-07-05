@@ -4879,7 +4879,7 @@ function hydrateFactory($stencilWindow, $stencilHydrateOpts, $stencilHydrateResu
 
 
 const NAMESPACE = 'stenciltest';
-const BUILD = /* stenciltest */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, attachStyles: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: false, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: false, cssAnnotations: true, cssVarShim: false, devTools: false, disconnectedCallback: false, dynamicImportShim: false, element: false, event: true, hasRenderFn: true, hostListener: true, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: true, hydrateServerSide: true, hydratedAttribute: false, hydratedClass: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: false, lifecycleDOMEvents: false, member: true, method: false, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: true, propMutable: false, propNumber: true, propString: true, reflect: false, safari10: false, scoped: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, shadowDomShim: true, slot: true, slotChildNodesFix: false, slotRelocation: true, state: false, style: true, svg: false, taskQueue: true, updatable: true, vdomAttribute: true, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: true, vdomPropOrAttr: true, vdomRef: false, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: false };
+const BUILD = /* stenciltest */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, attachStyles: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: false, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: false, cssAnnotations: true, cssVarShim: false, devTools: false, disconnectedCallback: false, dynamicImportShim: false, element: false, event: true, hasRenderFn: true, hostListener: true, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: true, hydrateServerSide: true, hydratedAttribute: false, hydratedClass: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: false, lifecycleDOMEvents: false, member: true, method: false, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: true, propMutable: false, propNumber: true, propString: true, reflect: false, safari10: false, scoped: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, shadowDomShim: true, slot: true, slotChildNodesFix: false, slotRelocation: true, state: false, style: true, svg: false, taskQueue: true, updatable: true, vdomAttribute: true, vdomClass: true, vdomFunctional: false, vdomKey: false, vdomListener: true, vdomPropOrAttr: true, vdomRef: false, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: false };
 
 function componentOnReady() {
  return getHostRef(this).$onReadyPromise$;
@@ -5124,7 +5124,10 @@ const createTime = (e, t = "") => {
 }, Host = {}, isHost = e => e && e.$tag$ === Host, setAccessor = (e, t, o, n, s, l) => {
  if (o !== n) {
   let a = isMemberInElement(e, t), r = t.toLowerCase();
-  if ((a ) || "o" !== t[0] || "n" !== t[1]) {
+  if ("class" === t) {
+   const t = e.classList, s = parseClassList(o), l = parseClassList(n);
+   t.remove(...s.filter((e => e && !l.includes(e)))), t.add(...l.filter((e => e && !s.includes(e))));
+  } else if ((a ) || "o" !== t[0] || "n" !== t[1]) {
    {
     const i = isComplexType(n);
     if ((a || i && null !== n) && !s) try {
@@ -5139,7 +5142,7 @@ const createTime = (e, t = "") => {
   } else t = "-" === t[2] ? t.slice(3) : isMemberInElement(win, r) ? r.slice(2) : r[2] + t.slice(3), 
   o && plt.rel(e, t, o, !1), n && plt.ael(e, t, n, !1);
  }
-}, updateElement = (e, t, o, n) => {
+}, parseClassListRegex = /\s/, parseClassList = e => e ? e.split(parseClassListRegex) : [], updateElement = (e, t, o, n) => {
  const s = 11 === t.$elm$.nodeType && t.$elm$.host ? t.$elm$.host : t.$elm$, l = e && e.$attrs$ || EMPTY_OBJ, a = t.$attrs$ || EMPTY_OBJ;
  for (n in l) n in a || setAccessor(s, n, l[n], void 0, o, t.$flags$);
  for (n in a) setAccessor(s, n, l[n], a[n], o, t.$flags$);
@@ -5624,27 +5627,94 @@ const cmpModules = new Map, getModule = e => {
  e["s-p"] = [], e["s-rc"] = [], addHostEventListeners(e, o, t.$listeners$), hostRefs.set(e, o);
 }, styles = new Map;
 
-function format(first, middle, last) {
-  return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
+function createCommonjsModule(fn, basedir, module) {
+	return module = {
+		path: basedir,
+		exports: {},
+		require: function (path, base) {
+			return commonjsRequire();
+		}
+	}, fn(module, module.exports), module.exports;
 }
+
+function commonjsRequire () {
+	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
+}
+
+var classnames = createCommonjsModule(function (module) {
+/*!
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames() {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				if (arg.length) {
+					var inner = classNames.apply(null, arg);
+					if (inner) {
+						classes.push(inner);
+					}
+				}
+			} else if (argType === 'object') {
+				if (arg.toString === Object.prototype.toString) {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				} else {
+					classes.push(arg.toString());
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else {
+		window.classNames = classNames;
+	}
+}());
+});
+
+const mrvlButtonCss = "/*!@:host*/.sc-mrvl-button-h{--font-family:'Lato', sans-serif;--primary:#007f93;--primary-hover:#00a6c0;--primary-active:#005765;--white:white}/*!@.button*/.button.sc-mrvl-button{font-family:var(--font-family);font-size:16px;line-height:150%;background-color:var(--primary);color:var(--white);padding:8px 16px;border:0;border-radius:100px;cursor:pointer}/*!@.button:hover*/.button.sc-mrvl-button:hover{background-color:var(--primary-hover)}/*!@.button:active*/.button.sc-mrvl-button:active{background-color:var(--primary-active)}/*!@.size-small*/.size-small.sc-mrvl-button{padding:4px 12px}/*!@.size-large*/.size-large.sc-mrvl-button{line-height:133%;font-size:18px;padding:12px 24px}/*!@.outline*/.outline.sc-mrvl-button{background:transparent;border:1px solid var(--primary);color:var(--primary)}/*!@.outline:hover*/.outline.sc-mrvl-button:hover{color:var(--white)}";
 
 class MrvlButton {
   constructor(hostRef) {
     registerInstance(this, hostRef);
-  }
-  getText() {
-    return format(this.first, this.middle, this.last);
+    this.size = 'medium';
+    this.outline = false;
   }
   render() {
-    return hAsync("button", null, "test", this.getText());
+    return (hAsync(Host, null, hAsync("button", { class: classnames('button', `size-${this.size}`, { outline: this.outline }) }, hAsync("slot", null))));
   }
+  static get style() { return mrvlButtonCss; }
   static get cmpMeta() { return {
     "$flags$": 9,
     "$tagName$": "mrvl-button",
     "$members$": {
-      "first": [1],
-      "middle": [1],
-      "last": [1]
+      "type": [1],
+      "size": [1],
+      "outline": [4]
     },
     "$listeners$": undefined,
     "$lazyBundleId$": "-",

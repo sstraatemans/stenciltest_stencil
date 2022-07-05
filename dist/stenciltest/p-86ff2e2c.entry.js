@@ -1,1 +1,0 @@
-import{r as t,h as e,H as s,g as r}from"./p-526cf81e.js";const l=class{constructor(e){t(this,e)}render(){const{value:t,name:r}=this;return e(s,null,e("div",null,e("label",{htmlFor:this.name},this.label),e("input",{type:"text",name:r,id:r,value:t})))}get el(){return r(this)}};export{l as mrvl_input}
