@@ -2,13 +2,9 @@ import { Component, Prop, h, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'my-component',
-  styleUrl: 'my-component.css',
   shadow: true,
 })
 export class MyComponent {
-  /**
-   * The first name
-   */
   @Prop() count: number;
   @Event()
   todoCompleted: EventEmitter<any>;

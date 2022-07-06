@@ -1,6 +1,4 @@
-import { r as registerInstance, c as createEvent, h } from './index-abb4bf53.js';
-
-const myComponentCss = ":host{display:block}";
+import { r as registerInstance, c as createEvent, h } from './index-34dd2338.js';
 
 const MyComponent = class {
   constructor(hostRef) {
@@ -14,6 +12,5 @@ const MyComponent = class {
     return (h("div", null, "Hello, World! I'm ", this.count, h("button", { onClick: this.completedHandler.bind(this) }, "send event")));
   }
 };
-MyComponent.style = myComponentCss;
 
 export { MyComponent as my_component };

@@ -1,8 +1,10 @@
 /* stenciltest custom elements */
 export { MrvlButton as MrvlButton } from '../types/components/mrvl-button/mrvl-button';
+export { MrvlCard as MrvlCard } from '../types/components/mrvl-card/mrvl-card';
 export { MrvlCheckbox as MrvlCheckbox } from '../types/components/mrvl-checkbox/mrvl-checkbox';
 export { MrvlForm as MrvlForm } from '../types/components/mrvl-form/mrvl-form';
 export { MrvlInput as MrvlInput } from '../types/components/mrvl-input/mrvl-input';
+export { MrvlTypography as MrvlTypography } from '../types/components/mrvl-typography/mrvl-typography';
 export { MyComponent as MyComponent } from '../types/components/my-component/my-component';
 
 /**

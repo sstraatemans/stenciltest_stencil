@@ -11,12 +11,6 @@ export class MyComponent {
   }
   static get is() { return "my-component"; }
   static get encapsulation() { return "shadow"; }
-  static get originalStyleUrls() { return {
-    "$": ["my-component.css"]
-  }; }
-  static get styleUrls() { return {
-    "$": ["my-component.css"]
-  }; }
   static get properties() { return {
     "count": {
       "type": "number",
@@ -30,7 +24,7 @@ export class MyComponent {
       "optional": false,
       "docs": {
         "tags": [],
-        "text": "The first name"
+        "text": ""
       },
       "attribute": "count",
       "reflect": false

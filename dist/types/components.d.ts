@@ -11,6 +11,8 @@ export namespace Components {
         "size": 'small' | 'medium' | 'large';
         "type": 'button' | 'submit';
     }
+    interface MrvlCard {
+    }
     interface MrvlCheckbox {
         "innerValue": string;
         "label": string;
@@ -25,10 +27,9 @@ export namespace Components {
         "name": string;
         "value": string;
     }
+    interface MrvlTypography {
+    }
     interface MyComponent {
-        /**
-          * The first name
-         */
         "count": number;
     }
 }
@@ -42,6 +43,12 @@ declare global {
     var HTMLMrvlButtonElement: {
         prototype: HTMLMrvlButtonElement;
         new (): HTMLMrvlButtonElement;
+    };
+    interface HTMLMrvlCardElement extends Components.MrvlCard, HTMLStencilElement {
+    }
+    var HTMLMrvlCardElement: {
+        prototype: HTMLMrvlCardElement;
+        new (): HTMLMrvlCardElement;
     };
     interface HTMLMrvlCheckboxElement extends Components.MrvlCheckbox, HTMLStencilElement {
     }
@@ -61,6 +68,12 @@ declare global {
         prototype: HTMLMrvlInputElement;
         new (): HTMLMrvlInputElement;
     };
+    interface HTMLMrvlTypographyElement extends Components.MrvlTypography, HTMLStencilElement {
+    }
+    var HTMLMrvlTypographyElement: {
+        prototype: HTMLMrvlTypographyElement;
+        new (): HTMLMrvlTypographyElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -69,9 +82,11 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "mrvl-button": HTMLMrvlButtonElement;
+        "mrvl-card": HTMLMrvlCardElement;
         "mrvl-checkbox": HTMLMrvlCheckboxElement;
         "mrvl-form": HTMLMrvlFormElement;
         "mrvl-input": HTMLMrvlInputElement;
+        "mrvl-typography": HTMLMrvlTypographyElement;
         "my-component": HTMLMyComponentElement;
     }
 }
@@ -80,6 +95,8 @@ declare namespace LocalJSX {
         "outline"?: boolean;
         "size"?: 'small' | 'medium' | 'large';
         "type"?: 'button' | 'submit';
+    }
+    interface MrvlCard {
     }
     interface MrvlCheckbox {
         "innerValue"?: string;
@@ -95,18 +112,19 @@ declare namespace LocalJSX {
         "name"?: string;
         "value"?: string;
     }
+    interface MrvlTypography {
+    }
     interface MyComponent {
-        /**
-          * The first name
-         */
         "count"?: number;
         "onTodoCompleted"?: (event: MyComponentCustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "mrvl-button": MrvlButton;
+        "mrvl-card": MrvlCard;
         "mrvl-checkbox": MrvlCheckbox;
         "mrvl-form": MrvlForm;
         "mrvl-input": MrvlInput;
+        "mrvl-typography": MrvlTypography;
         "my-component": MyComponent;
     }
 }
@@ -115,9 +133,11 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "mrvl-button": LocalJSX.MrvlButton & JSXBase.HTMLAttributes<HTMLMrvlButtonElement>;
+            "mrvl-card": LocalJSX.MrvlCard & JSXBase.HTMLAttributes<HTMLMrvlCardElement>;
             "mrvl-checkbox": LocalJSX.MrvlCheckbox & JSXBase.HTMLAttributes<HTMLMrvlCheckboxElement>;
             "mrvl-form": LocalJSX.MrvlForm & JSXBase.HTMLAttributes<HTMLMrvlFormElement>;
             "mrvl-input": LocalJSX.MrvlInput & JSXBase.HTMLAttributes<HTMLMrvlInputElement>;
+            "mrvl-typography": LocalJSX.MrvlTypography & JSXBase.HTMLAttributes<HTMLMrvlTypographyElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }

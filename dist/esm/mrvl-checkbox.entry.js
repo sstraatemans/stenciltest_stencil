@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-abb4bf53.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-34dd2338.js';
 
 const MrvlCheckbox = class {
   constructor(hostRef) {

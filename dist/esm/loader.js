@@ -1,4 +1,4 @@
-import { p as promiseResolve, b as bootstrapLazy } from './index-abb4bf53.js';
+import { p as promiseResolve, b as bootstrapLazy } from './index-34dd2338.js';
 
 /*
  Stencil Client Patch Esm v2.17.0 | MIT Licensed | https://stenciljs.com
@@ -10,7 +10,7 @@ const patchEsm = () => {
 const defineCustomElements = (win, options) => {
   if (typeof window === 'undefined') return Promise.resolve();
   return patchEsm().then(() => {
-  return bootstrapLazy([["mrvl-button",[[1,"mrvl-button",{"type":[1],"size":[1],"outline":[4]}]]],["mrvl-checkbox",[[0,"mrvl-checkbox",{"name":[1],"value":[4],"label":[1],"innerValue":[1,"inner-value"]}]]],["mrvl-form",[[4,"mrvl-form",{"name":[1]},[[0,"input","inputHandler"]]]]],["mrvl-input",[[0,"mrvl-input",{"name":[1],"value":[1],"label":[1]}]]],["my-component",[[1,"my-component",{"count":[2]}]]]], options);
+  return bootstrapLazy([["mrvl-card",[[6,"mrvl-card"]]],["mrvl-button",[[1,"mrvl-button",{"type":[1],"size":[1],"outline":[4]}]]],["mrvl-checkbox",[[0,"mrvl-checkbox",{"name":[1],"value":[4],"label":[1],"innerValue":[1,"inner-value"]}]]],["mrvl-form",[[4,"mrvl-form",{"name":[1]},[[0,"input","inputHandler"]]]]],["mrvl-input",[[0,"mrvl-input",{"name":[1],"value":[1],"label":[1]}]]],["my-component",[[1,"my-component",{"count":[2]}]]],["mrvl-typography",[[1,"mrvl-typography"]]]], options);
   });
 };
 

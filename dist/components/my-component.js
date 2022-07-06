@@ -1,7 +1,5 @@
 import { proxyCustomElement, HTMLElement, createEvent, h } from '@stencil/core/internal/client';
 
-const myComponentCss = ":host{display:block}";
-
 const MyComponent$1 = /*@__PURE__*/ proxyCustomElement(class extends HTMLElement {
   constructor() {
     super();
@@ -15,7 +13,6 @@ const MyComponent$1 = /*@__PURE__*/ proxyCustomElement(class extends HTMLElement
   render() {
     return (h("div", null, "Hello, World! I'm ", this.count, h("button", { onClick: this.completedHandler.bind(this) }, "send event")));
   }
-  static get style() { return myComponentCss; }
 }, [1, "my-component", {
     "count": [2]
   }]);

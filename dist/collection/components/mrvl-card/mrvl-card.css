@@ -1,0 +1,17 @@
+:host {
+  --font-family: 'Lato', sans-serif;
+  --background: #e4ebec;
+  --primary-hover: #00a6c0;
+  --primary-active: #005765;
+  --white: white;
+}
+
+.card {
+  font-family: var(--font-family);
+  background-color: var(--background);
+  border-radius: 20px;
+}
+
+.content {
+  padding: 32px;
+}

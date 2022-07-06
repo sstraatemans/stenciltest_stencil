@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-abb4bf53.js';
+import { r as registerInstance, h, H as Host } from './index-34dd2338.js';
 
 function createCommonjsModule(fn, basedir, module) {
 	return module = {
@@ -69,7 +69,7 @@ var classnames = createCommonjsModule(function (module) {
 }());
 });
 
-const mrvlButtonCss = ":host{--font-family:'Lato', sans-serif;--primary:#007f93;--primary-hover:#00a6c0;--primary-active:#005765;--white:white}.button{font-family:var(--font-family);font-size:16px;line-height:150%;background-color:var(--primary);color:var(--white);padding:8px 16px;border:0;border-radius:100px;cursor:pointer}.button:hover{background-color:var(--primary-hover)}.button:active{background-color:var(--primary-active)}.size-small{padding:4px 12px}.size-large{line-height:133%;font-size:18px;padding:12px 24px}.outline{background:transparent;border:1px solid var(--primary);color:var(--primary)}.outline:hover{color:var(--white)}";
+const mrvlButtonCss = ":host{--font-family:'Lato', sans-serif;--primary:#007f93;--primary-hover:#00a6c0;--primary-active:#005765;--white:white}.button{font-family:var(--font-family);font-size:16px;line-height:150%;background-color:var(--primary);color:var(--white);padding:8px 16px;border:0;border-radius:100px;cursor:pointer}.button:hover{background-color:var(--primary-hover)}.button:active{background-color:var(--primary-active)}.size-small{padding:4px 12px}.size-large{line-height:133%;font-size:18px;padding:12px 24px}.outline{background:var(--white);border:1px solid var(--primary);color:var(--primary)}.outline:hover{color:var(--white)}";
 
 const MrvlButton = class {
   constructor(hostRef) {

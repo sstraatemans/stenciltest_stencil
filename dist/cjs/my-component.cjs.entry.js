@@ -2,9 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-5c857e50.js');
-
-const myComponentCss = ":host{display:block}";
+const index = require('./index-7ad7da1b.js');
 
 const MyComponent = class {
   constructor(hostRef) {
@@ -18,6 +16,5 @@ const MyComponent = class {
     return (index.h("div", null, "Hello, World! I'm ", this.count, index.h("button", { onClick: this.completedHandler.bind(this) }, "send event")));
   }
 };
-MyComponent.style = myComponentCss;
 
 exports.my_component = MyComponent;

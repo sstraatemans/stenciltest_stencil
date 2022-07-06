@@ -39,7 +39,7 @@
 }
 
 .outline {
-  background: transparent;
+  background: var(--white);
   border: 1px solid var(--primary);
   color: var(--primary);
 }

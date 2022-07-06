@@ -1,0 +1,11 @@
+:host {
+  --font-family: 'Lato', sans-serif;
+  --primary-font: #00a6c0;
+}
+
+.wrapper {
+  font-family: var(--font-family);
+  font-size: 24px;
+  background-color: var(--background);
+  border-radius: 20px;
+}

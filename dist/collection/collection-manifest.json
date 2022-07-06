@@ -4,6 +4,8 @@
     "./components/forms/mrvl-form/mrvl-form.js",
     "./components/forms/mrvl-input/mrvl-input.js",
     "./components/mrvl-button/mrvl-button.js",
+    "./components/mrvl-card/mrvl-card.js",
+    "./components/mrvl-typography/mrvl-typography.js",
     "./components/my-component/my-component.js"
   ],
   "compiler": {
