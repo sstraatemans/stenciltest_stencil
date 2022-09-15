@@ -7,12 +7,11 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type      | Default     |
-| ------------ | ------------- | ----------- | --------- | ----------- |
-| `innerValue` | `inner-value` |             | `string`  | `undefined` |
-| `label`      | `label`       |             | `string`  | `undefined` |
-| `name`       | `name`        |             | `string`  | `undefined` |
-| `value`      | `value`       |             | `boolean` | `undefined` |
+| Property | Attribute | Description | Type      | Default     |
+| -------- | --------- | ----------- | --------- | ----------- |
+| `label`  | `label`   |             | `string`  | `undefined` |
+| `name`   | `name`    |             | `string`  | `undefined` |
+| `value`  | `value`   |             | `boolean` | `undefined` |
 
 
 ----------------------------------------------

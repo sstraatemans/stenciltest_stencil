@@ -8,9 +8,9 @@ import { Component, h } from '@stencil/core';
 export class MrvlTypography {
   render() {
     return (
-      <span class="wrapper">
+      <div class="wrapper">
         <slot />
-      </span>
+      </div>
     );
   }
 }

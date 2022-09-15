@@ -1,7 +1,7 @@
 import { Component, h } from '@stencil/core';
 export class MrvlTypography {
   render() {
-    return (h("span", { class: "wrapper" },
+    return (h("div", { class: "wrapper" },
       h("slot", null)));
   }
   static get is() { return "mrvl-typography"; }

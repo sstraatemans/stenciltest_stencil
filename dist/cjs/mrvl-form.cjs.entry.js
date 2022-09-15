@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-7ad7da1b.js');
+const index = require('./index-c240034d.js');
 
 const MrvlForm = class {
   constructor(hostRef) {

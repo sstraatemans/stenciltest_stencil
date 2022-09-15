@@ -9,7 +9,7 @@ const MrvlTypography = /*@__PURE__*/ proxyCustomElement(class extends HTMLElemen
     this.__attachShadow();
   }
   render() {
-    return (h("span", { class: "wrapper" }, h("slot", null)));
+    return (h("div", { class: "wrapper" }, h("slot", null)));
   }
   static get style() { return mrvlTypographyCss; }
 }, [1, "mrvl-typography"]);

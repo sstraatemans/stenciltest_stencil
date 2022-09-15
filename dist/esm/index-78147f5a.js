@@ -147,9 +147,6 @@ const attachStyles = (hostRef) => {
         // DOM WRITE!!
         elm['s-sc'] = scopeId;
         elm.classList.add(scopeId + '-h');
-        if (flags & 2 /* scopedCssEncapsulation */) {
-            elm.classList.add(scopeId + '-s');
-        }
     }
     endAttachStyles();
 };
@@ -1783,4 +1780,4 @@ const flush = () => {
 const nextTick = /*@__PURE__*/ (cb) => promiseResolve().then(cb);
 const writeTask = /*@__PURE__*/ queueTask(queueDomWrites, true);
 
-export { Host as H, bootstrapLazy as b, createEvent as c, getElement as g, h, promiseResolve as p, registerInstance as r };
+export { Host as H, bootstrapLazy as b, createEvent as c, h, promiseResolve as p, registerInstance as r };

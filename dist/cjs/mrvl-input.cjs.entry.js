@@ -2,29 +2,19 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-7ad7da1b.js');
+const index = require('./index-c240034d.js');
+
+const mrvlInputCss = ":host{--font-family:'Lato', sans-serif;--primary:#007f93;--primary-hover:#00a6c0;--primary-active:#005765;--white:white}";
 
 const MrvlInput = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
-  // renderInputOutsideShadowRoot(container, name, value) {
-  //   let input = container.querySelector('input.hidden-input');
-  //   if (!input) {
-  //     input = container.ownerDocument.createElement('input');
-  //     input.type = 'hidden';
-  //     input.classList.add('hidden-input');
-  //     container.appendChild(input);
-  //   }
-  //   input.name = name;
-  //   input.value = value || '';
-  // }
   render() {
-    const { value, name } = this;
-    //this.renderInputOutsideShadowRoot(el, name, value);
-    return (index.h(index.Host, null, index.h("div", null, index.h("label", { htmlFor: this.name }, this.label), index.h("input", { type: "text", name: name, id: name, value: value }))));
+    const { value, name, label } = this;
+    return (index.h(index.Host, null, index.h("div", null, index.h("label", { htmlFor: name }, label), index.h("input", { type: "text", name: name, id: name, value: value }))));
   }
-  get el() { return index.getElement(this); }
 };
+MrvlInput.style = mrvlInputCss;
 
 exports.mrvl_input = MrvlInput;

@@ -1,12 +1,14 @@
 import { Component, Prop, h, Event } from '@stencil/core';
 export class MyComponent {
   completedHandler() {
+    console.log(234234234);
     this.todoCompleted.emit({ foo: 'bar' });
   }
   render() {
     return (h("div", null,
       "Hello, World! I'm ",
       this.count,
+      "s",
       h("button", { onClick: this.completedHandler.bind(this) }, "send event")));
   }
   static get is() { return "my-component"; }

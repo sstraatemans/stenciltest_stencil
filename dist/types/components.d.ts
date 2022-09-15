@@ -14,7 +14,6 @@ export namespace Components {
     interface MrvlCard {
     }
     interface MrvlCheckbox {
-        "innerValue": string;
         "label": string;
         "name": string;
         "value": boolean;
@@ -99,7 +98,6 @@ declare namespace LocalJSX {
     interface MrvlCard {
     }
     interface MrvlCheckbox {
-        "innerValue"?: string;
         "label"?: string;
         "name"?: string;
         "value"?: boolean;

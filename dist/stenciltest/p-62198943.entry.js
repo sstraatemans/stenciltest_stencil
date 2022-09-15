@@ -1,0 +1,1 @@
+import{r,h as a}from"./p-0ef811a9.js";const o=class{constructor(a){r(this,a)}render(){return a("div",{class:"wrapper"},a("slot",null))}};o.style=":host{--font-family:'Lato', sans-serif;--primary-font:#00a6c0}.wrapper{font-family:var(--font-family);font-size:24px;background-color:var(--background);border-radius:20px}";export{o as mrvl_typography}

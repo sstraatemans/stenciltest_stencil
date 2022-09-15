@@ -1,0 +1,7 @@
+:host {
+  --font-family: 'Lato', sans-serif;
+  --primary: #007f93;
+  --primary-hover: #00a6c0;
+  --primary-active: #005765;
+  --white: white;
+}

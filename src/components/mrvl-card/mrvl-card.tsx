@@ -1,23 +1,22 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Host } from '@stencil/core';
 
 @Component({
   tag: 'mrvl-card',
   styleUrl: 'mrvl-card.css',
-  shadow: false,
-  scoped: true,
+  shadow: true,
 })
 export class MrvlCard {
   render() {
     return (
-      <div class="card">
-        <div class="content">
-          <mrvl-typography>
-            Text inside the card component
-            <slot />
-          </mrvl-typography>
-          <slot name="actions" />
+      <Host>
+        <div class="card">
+          <div class="content">
+            <mrvl-typography>Text inside the card component</mrvl-typography>
+            <slot name="body" />
+            <slot name="actions" />
+          </div>
         </div>
-      </div>
+      </Host>
     );
   }
 }

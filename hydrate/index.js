@@ -4879,7 +4879,7 @@ function hydrateFactory($stencilWindow, $stencilHydrateOpts, $stencilHydrateResu
 
 
 const NAMESPACE = 'stenciltest';
-const BUILD = /* stenciltest */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, attachStyles: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: false, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: false, cssAnnotations: true, cssVarShim: false, devTools: false, disconnectedCallback: false, dynamicImportShim: false, element: false, event: true, hasRenderFn: true, hostListener: true, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: true, hydrateServerSide: true, hydratedAttribute: false, hydratedClass: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: false, lifecycleDOMEvents: false, member: true, method: false, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: true, propMutable: false, propNumber: true, propString: true, reflect: false, safari10: false, scoped: true, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, shadowDomShim: true, slot: true, slotChildNodesFix: false, slotRelocation: true, state: false, style: true, svg: false, taskQueue: true, updatable: true, vdomAttribute: true, vdomClass: true, vdomFunctional: false, vdomKey: false, vdomListener: true, vdomPropOrAttr: true, vdomRef: false, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: false };
+const BUILD = /* stenciltest */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, attachStyles: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: false, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: false, cssAnnotations: true, cssVarShim: false, devTools: false, disconnectedCallback: false, dynamicImportShim: false, element: false, event: true, hasRenderFn: true, hostListener: true, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: true, hydrateServerSide: true, hydratedAttribute: false, hydratedClass: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: false, lifecycleDOMEvents: false, member: true, method: false, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: true, propMutable: false, propNumber: true, propString: true, reflect: false, safari10: false, scoped: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, shadowDomShim: true, slot: true, slotChildNodesFix: false, slotRelocation: true, state: false, style: true, svg: false, taskQueue: true, updatable: true, vdomAttribute: true, vdomClass: true, vdomFunctional: false, vdomKey: false, vdomListener: true, vdomPropOrAttr: true, vdomRef: false, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: false };
 
 function componentOnReady() {
  return getHostRef(this).$onReadyPromise$;
@@ -5098,7 +5098,7 @@ const createTime = (e, t = "") => {
 }, attachStyles = e => {
  const t = e.$cmpMeta$, o = e.$hostElement$, n = t.$flags$, s = createTime("attachStyles", t.$tagName$), l = addStyle(o.getRootNode(), t);
  10 & n && (o["s-sc"] = l, 
- o.classList.add(l + "-h"), 2 & n && o.classList.add(l + "-s")), 
+ o.classList.add(l + "-h"), BUILD.scoped  ), 
  s();
 }, getScopeId = (e, t) => "sc-" + (e.$tagName$), EMPTY_OBJ = {}, isComplexType = e => "object" == (e = typeof e) || "function" === e, isPromise = e => !!e && ("object" == typeof e || "function" == typeof e) && "function" == typeof e.then, h = (e, t, ...o) => {
  let n = null, l = null, a = !1, r = !1;
@@ -5722,18 +5722,18 @@ class MrvlButton {
   }; }
 }
 
-const mrvlCardCss = ".sc-mrvl-card-h{--font-family:'Lato', sans-serif;--background:#e4ebec;--primary-hover:#00a6c0;--primary-active:#005765;--white:white}.card.sc-mrvl-card{font-family:var(--font-family);background-color:var(--background);border-radius:20px}.content.sc-mrvl-card{padding:32px}";
+const mrvlCardCss = "/*!@:host*/.sc-mrvl-card-h{--font-family:'Lato', sans-serif;--background:#e4ebec;--primary-hover:#00a6c0;--primary-active:#005765;--white:white}/*!@.card*/.card.sc-mrvl-card{font-family:var(--font-family);background-color:var(--background);border-radius:20px}/*!@.content*/.content.sc-mrvl-card{padding:32px}";
 
 class MrvlCard {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
   render() {
-    return (hAsync("div", { class: "card" }, hAsync("div", { class: "content" }, hAsync("mrvl-typography", null, "Text inside the card component", hAsync("slot", null)), hAsync("slot", { name: "actions" }))));
+    return (hAsync(Host, null, hAsync("div", { class: "card" }, hAsync("div", { class: "content" }, hAsync("mrvl-typography", null, "Text inside the card component"), hAsync("slot", { name: "body" }), hAsync("slot", { name: "actions" })))));
   }
   static get style() { return mrvlCardCss; }
   static get cmpMeta() { return {
-    "$flags$": 6,
+    "$flags$": 9,
     "$tagName$": "mrvl-card",
     "$members$": undefined,
     "$listeners$": undefined,
@@ -5746,31 +5746,17 @@ class MrvlCheckbox {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
-  // renderInputOutsideShadowRoot(container, name, value) {
-  //   let input = container.querySelector('input.hidden-input');
-  //   if (!input) {
-  //     input = container.ownerDocument.createElement('input');
-  //     input.type = 'hidden';
-  //     input.classList.add('hidden-input');
-  //     container.appendChild(input);
-  //   }
-  //   input.name = name;
-  //   input.value = value || '';
-  // }
   render() {
-    const { value, name } = this;
-    //this.renderInputOutsideShadowRoot(el, name, value);
-    return (hAsync(Host, null, hAsync("div", null, hAsync("label", { htmlFor: this.name }, this.label), hAsync("input", { type: "checkbox", name: name, id: name, checked: !!value }))));
+    const { value, name, label } = this;
+    return (hAsync(Host, null, hAsync("div", null, hAsync("label", { htmlFor: name }, label), hAsync("input", { type: "checkbox", name: name, id: name, checked: !!value }))));
   }
-  get el() { return getElement(this); }
   static get cmpMeta() { return {
     "$flags$": 0,
     "$tagName$": "mrvl-checkbox",
     "$members$": {
       "name": [1],
       "value": [4],
-      "label": [1],
-      "innerValue": [1, "inner-value"]
+      "label": [1]
     },
     "$listeners$": undefined,
     "$lazyBundleId$": "-",
@@ -5805,27 +5791,17 @@ class MrvlForm {
   }; }
 }
 
+const mrvlInputCss = ":host{--font-family:'Lato', sans-serif;--primary:#007f93;--primary-hover:#00a6c0;--primary-active:#005765;--white:white}";
+
 class MrvlInput {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
-  // renderInputOutsideShadowRoot(container, name, value) {
-  //   let input = container.querySelector('input.hidden-input');
-  //   if (!input) {
-  //     input = container.ownerDocument.createElement('input');
-  //     input.type = 'hidden';
-  //     input.classList.add('hidden-input');
-  //     container.appendChild(input);
-  //   }
-  //   input.name = name;
-  //   input.value = value || '';
-  // }
   render() {
-    const { value, name } = this;
-    //this.renderInputOutsideShadowRoot(el, name, value);
-    return (hAsync(Host, null, hAsync("div", null, hAsync("label", { htmlFor: this.name }, this.label), hAsync("input", { type: "text", name: name, id: name, value: value }))));
+    const { value, name, label } = this;
+    return (hAsync(Host, null, hAsync("div", null, hAsync("label", { htmlFor: name }, label), hAsync("input", { type: "text", name: name, id: name, value: value }))));
   }
-  get el() { return getElement(this); }
+  static get style() { return mrvlInputCss; }
   static get cmpMeta() { return {
     "$flags$": 0,
     "$tagName$": "mrvl-input",
@@ -5847,7 +5823,7 @@ class MrvlTypography {
     registerInstance(this, hostRef);
   }
   render() {
-    return (hAsync("span", { class: "wrapper" }, hAsync("slot", null)));
+    return (hAsync("div", { class: "wrapper" }, hAsync("slot", null)));
   }
   static get style() { return mrvlTypographyCss; }
   static get cmpMeta() { return {
@@ -5866,10 +5842,11 @@ class MyComponent {
     this.todoCompleted = createEvent(this, "todoCompleted", 7);
   }
   completedHandler() {
+    console.log(234234234);
     this.todoCompleted.emit({ foo: 'bar' });
   }
   render() {
-    return (hAsync("div", null, "Hello, World! I'm ", this.count, hAsync("button", { onClick: this.completedHandler.bind(this) }, "send event")));
+    return (hAsync("div", null, "Hello, World! I'm ", this.count, "s", hAsync("button", { onClick: this.completedHandler.bind(this) }, "send event")));
   }
   static get cmpMeta() { return {
     "$flags$": 9,

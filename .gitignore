@@ -1,6 +1,7 @@
 
 www/
 
+./dist
 .parcel-cache
 
 *~

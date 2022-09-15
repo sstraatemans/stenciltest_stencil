@@ -1,0 +1,1 @@
+import{r as e,h as l,H as r}from"./p-0ef811a9.js";const t=class{constructor(l){e(this,l)}render(){const{value:e,name:t,label:c}=this;return l(r,null,l("div",null,l("label",{htmlFor:t},c),l("input",{type:"checkbox",name:t,id:t,checked:!!e})))}};export{t as mrvl_checkbox}

@@ -10,14 +10,14 @@ export class MyComponent {
   todoCompleted: EventEmitter<any>;
 
   completedHandler() {
+    console.log(234234234);
     this.todoCompleted.emit({ foo: 'bar' });
   }
 
   render() {
     return (
       <div>
-        Hello, World! I'm {this.count}
-        <button onClick={this.completedHandler.bind(this)}>send event</button>
+        Hello, World! I'm {this.count}s<button onClick={this.completedHandler.bind(this)}>send event</button>
       </div>
     );
   }

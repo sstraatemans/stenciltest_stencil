@@ -1,15 +1,15 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Host } from '@stencil/core';
 export class MrvlCard {
   render() {
-    return (h("div", { class: "card" },
-      h("div", { class: "content" },
-        h("mrvl-typography", null,
-          "Text inside the card component",
-          h("slot", null)),
-        h("slot", { name: "actions" }))));
+    return (h(Host, null,
+      h("div", { class: "card" },
+        h("div", { class: "content" },
+          h("mrvl-typography", null, "Text inside the card component"),
+          h("slot", { name: "body" }),
+          h("slot", { name: "actions" })))));
   }
   static get is() { return "mrvl-card"; }
-  static get encapsulation() { return "scoped"; }
+  static get encapsulation() { return "shadow"; }
   static get originalStyleUrls() { return {
     "$": ["mrvl-card.css"]
   }; }
